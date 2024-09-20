@@ -1,9 +1,11 @@
 import { Hono } from 'hono'
+import { serveStatic } from 'hono/deno'
 
 const app = new Hono()
+app.use('/static/*', serveStatic({ root: './' }))
 
 app.get('/', async (c) => {
-    const filename = "./event.fragment.html";
+    const filename = "./digest.html";
 
     try {
         const text = await Deno.readTextFile(filename);
