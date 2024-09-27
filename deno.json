@@ -4,7 +4,7 @@
   },
   "tasks": {
     "start": "deno run --allow-net --allow-read main.ts",
-    "events": "deno run --allow-net --allow-read events.model.ts"
+    "events": "deno run --allow-net --allow-read --allow-net events.model.ts"
   },
   "compilerOptions": {
     "jsx": "precompile",

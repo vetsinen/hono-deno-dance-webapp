@@ -13,10 +13,8 @@ export type Event = {
 
 export async function events(city='Київ'):Promise<Event[]>{
     try {
-        // Get the current date in 'YYYY-MM-DD' format
         const today = new Date().toLocaleDateString('en-CA'); // 'en-CA' formats as 'YYYY-MM-DD'
 
-        // Query the database for relevant events
         const { data, error } = await supabase
             .from('posts')
             .select('id, event_brief, event_date')
@@ -24,7 +22,7 @@ export async function events(city='Київ'):Promise<Event[]>{
             .eq('category', 'danceparty')
             .eq('city', city)
             .gte('event_date', today) // Select records with current or future event_date
-            .order('event_date', { ascending: false }) // Order by creation date
+            .order('event_date', { ascending: false }) // Order by date
             .limit(25); // Limit results to 25
         if (error) throw error;
 
